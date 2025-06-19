@@ -19,7 +19,7 @@ function setupNodeEvents(on, config) {
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-    reportDir: 'cypress/reports/html/.jsons',
+    reportDir: 'cypress/reports/html',
     overwrite: false,
     html: false,
     json: true
