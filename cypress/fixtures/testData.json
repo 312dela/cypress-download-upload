@@ -1,0 +1,14 @@
+{
+  "searchFruit": {
+    "fruitName1": "Banana",
+    "element": 6
+  },
+  "modifyFruit": {
+    "priceChange": 50,
+    "newDataNo": 7,
+    "newFruit": "Strawberry",
+    "newColor": "Red",
+    "newPrice": 100,
+    "newSeason": "All"
+  }
+}
