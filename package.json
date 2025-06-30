@@ -1,0 +1,24 @@
+{
+  "name": "cypressdownloadupload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,json=false",
+    "generate-report": "open cypress/reports/html/mochawesome.html",
+    "test:withreport": "npm run test && npm run generate-report"
+  },
+  "author": "dela rosa",
+  "license": "ISC",
+  "dependencies": {
+    "convert-excel-to-json": "^1.7.0",
+    "cypress": "^14.5.0",
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}
