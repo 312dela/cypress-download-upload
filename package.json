@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npx cypress run",
+    "merge-report": "npx mochawesome-merge cypress/reports/html/.jsons/*.json > cypress/reports/html/mochawesome.json",
     "generate-report": "npx mochawesome-report-generator cypress/reports/html/mochawesome.json --reportDir cypress/reports/html",
-    "test:withreport": "npm run test && npm run generate-report"
+    "test:withreport": "npm run test && npm run merge-report && npm run generate-report"
   },
   "author": "dela rosa",
   "license": "ISC",
