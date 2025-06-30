@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,json=true",
-    "generate-report": "npx mochawesome-merge cypress/reports/html/*.json | npx mochawesome-report-generator --reportDir cypress/reports/html --inline",
+    "test": "npx cypress run",
+    "generate-report": "npx mochawesome-report-generator cypress/reports/html/mochawesome.json --reportDir cypress/reports/html",
     "test:withreport": "npm run test && npm run generate-report"
   },
   "author": "dela rosa",
