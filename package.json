@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,json=true",
-    "generate-report": "open cypress/reports/html/mochawesome.html",
+    "generate-report": "npx mochawesome-merge cypress/reports/html/*.json | npx mochawesome-report-generator --reportDir cypress/reports/html --inline",
     "test:withreport": "npm run test && npm run generate-report"
   },
   "author": "dela rosa",
