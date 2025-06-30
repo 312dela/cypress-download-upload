@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,json=false",
+    "test": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,json=true",
     "generate-report": "open cypress/reports/html/mochawesome.html",
     "test:withreport": "npm run test && npm run generate-report"
   },
