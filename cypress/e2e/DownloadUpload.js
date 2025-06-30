@@ -1,5 +1,5 @@
 /// <reference types="cypress"/>
-//
+
 describe('Excel Data Validation', () => {
     let fruit;
     let fruitChanges;
