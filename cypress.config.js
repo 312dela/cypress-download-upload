@@ -15,31 +15,31 @@ function setupNodeEvents(on, config) {
     }
   });
 
- on('task', {
-  async writeExcelTest({ searchText, replaceText, change, fileLocation, appendRow }) {
-    const workbook = new ExcelJs.Workbook();
-    await workbook.xlsx.readFile(fileLocation);
-    const worksheet = workbook.getWorksheet('Sheet1');
+  on('task', {
+    async writeExcelTest({ searchText, replaceText, change, fileLocation, appendRow }) {
+      const workbook = new ExcelJs.Workbook();
+      await workbook.xlsx.readFile(fileLocation);
+      const worksheet = workbook.getWorksheet('Sheet1');
 
-    if (searchText) {
-      const output = await readExcel(worksheet, searchText);
-      if (output.row !== -1 && output.column !== -1) {
-        const cell = worksheet.getCell(output.row, output.column + change.colChange);
-        cell.value = replaceText;
+      if (searchText) {
+        const output = await readExcel(worksheet, searchText);
+        if (output.row !== -1 && output.column !== -1) {
+          const cell = worksheet.getCell(output.row, output.column + change.colChange);
+          cell.value = replaceText;
+        }
       }
-    }
 
-    if (appendRow) {
-      const lastRow = worksheet.lastRow;
-      const newRowIndex = lastRow.number + 1;
-      worksheet.getRow(newRowIndex).values = appendRow;
-    }
+      if (appendRow) {
+        const lastRow = worksheet.lastRow;
+        const newRowIndex = lastRow.number + 1;
+        worksheet.getRow(newRowIndex).values = appendRow;
+      }
 
-    return workbook.xlsx.writeFile(fileLocation)
-      .then(() => true)
-      .catch(() => false);
-  }
-})
+      return workbook.xlsx.writeFile(fileLocation)
+        .then(() => true)
+        .catch(() => false);
+    }
+  })
 
 
   //
@@ -51,34 +51,30 @@ function setupNodeEvents(on, config) {
   return config;
 }
 
-async function readExcel(worksheet,searchText)
-{
-    let output = {row:-1,column:-1};
-    worksheet.eachRow((row,rowNumber) =>
-    {
-          row.eachCell((cell,colNumber) =>
-          {
-              if(cell.value === searchText)
-              {
-                  output.row=rowNumber;
-                  output.column=colNumber;
-              }
-  
-  
-          }  )
-    
+async function readExcel(worksheet, searchText) {
+  let output = { row: -1, column: -1 };
+  worksheet.eachRow((row, rowNumber) => {
+    row.eachCell((cell, colNumber) => {
+      if (cell.value === searchText) {
+        output.row = rowNumber;
+        output.column = colNumber;
+      }
+
+
     })
-    return output;
+
+  })
+  return output;
 }
 
 
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-    reportDir: "cypress/reports/html",
+    reportDir: 'cypress/reports/html',
     overwrite: true,
     html: true,
-    json: true
+    json: false
   },
   e2e: {
     video: true,
